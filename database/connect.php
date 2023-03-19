@@ -8,8 +8,8 @@ $passWord = '';
 // khai báo biến databaseName
 $databaseName = 'person';
 // khởi tạo kết nối
-$connect = new mysqli($hostName, $userName, $passWord, $databaseName);
-//Kiểm tra kết nối
+$connect = mysqli_connect($hostName, $userName, $passWord, $databaseName);
+//Kiểm tra kqết nối
 if ($connect->connect_error) {
     exit('Kết nối không thành công. chi tiết lỗi:' . $connect->connect_error);
 }

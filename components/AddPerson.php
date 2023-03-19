@@ -1,5 +1,22 @@
 <?php
-$connect = '';
+require_once "../database/connect.php";
+
+if (!empty($_POST)) {
+    $hoten = $_POST['hoten'];
+    $tuoi = $_POST['tuoi'];
+    $gioitinh = $_POST['gioitinh'];
+    $quequan = $_POST['quequan'];
+    $sql = "INSERT INTO person_table (hoten, tuoi, gioitinh, quequan) VALUES ('{$hoten}', {$tuoi}, {$gioitinh}, '{$quequan}')";
+
+    $result = $connect->query($sql);
+    if ($result) {
+        header("Location: ../index.php");
+        exit();
+    } else {
+        echo "Error: " . mysqli_error();
+    }
+}
+
 ?>
 
 <!doctype html>
@@ -56,26 +73,6 @@ $connect = '';
     </div>
 
 
-    <?php
-    require_once("../database/connect.php");
-
-    if (!empty($_POST)) {
-        $hoten = $_POST['hoten'];
-        $tuoi = $_POST['tuoi'];
-        $gioitinh = $_POST['gioitinh'];
-        $quequan = $_POST['quequan'];
-        $sql = "INSERT INTO person_table (hoten, tuoi, gioitinh, quequan) VALUES ('{$hoten}', {$tuoi}, {$gioitinh}, '{$quequan}')";
-
-        $result = $connect->query($sql);
-        if ($result) {
-            header("Location: ../index.php");
-            exit();
-        } else {
-            echo "Error: " . mysqli_error();
-        }
-    }
-
-    ?>
     <script>
     </script>
 
